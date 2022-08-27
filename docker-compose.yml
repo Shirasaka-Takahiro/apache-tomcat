@@ -1,0 +1,14 @@
+version: '3'
+services:
+  httpd:
+    container_name: apache-container
+    build: ./apache_conf
+    volumes: 
+      - ./apache_conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./apache_conf/hoge.example.com.conf:/usr/local/apache2/conf/extra/vhosts/hoge.example.com.conf
+    ports:
+      - "8080:80"
+
+  tomcat:
+    container_name: tomcat-container
+    image: tomcat:alpine
